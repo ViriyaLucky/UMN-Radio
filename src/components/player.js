@@ -6,16 +6,18 @@ import {
     Image,
     TouchableOpacity,
 } from 'react-native'; import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import TrackPlayer, {
+    useTrackPlayerProgress,
+    usePlaybackState,
+    useTrackPlayerEvents
+  } from "react-native-track-player";
 const Controls = ({
-    muted,
-    shuffleOn,
-    repeatOn,
+    paused,
     onPressPlay,
     onPressPause,
   }) => (
             <View>
-                {!muted ?
+                {!paused ?
                     <TouchableOpacity onPress={onPressPause}>
                         <View style={styles.playButton}>
                             <Icon name="pause-circle-outline" size={100} color='#2a71b8' />
