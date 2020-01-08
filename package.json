@@ -1,6 +1,6 @@
 {
   "name": "umnradio",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "react-native start",
@@ -14,6 +14,7 @@
     "react-native-paper": "^2.16.0",
     "react-native-push-notification": "^3.1.8",
     "react-native-reanimated": "^1.2.0",
+    "react-native-splash-screen": "^3.2.0",
     "react-native-track-player": "^1.1.8",
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^3.11.1",

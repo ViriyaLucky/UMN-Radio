@@ -3,17 +3,14 @@ import {
   Image,
   StyleSheet,
   View,
-  Text,
   StatusBar,
-  AppState, Platform
 } from 'react-native';
 import { Provider as PaperProvider, Card, Title, Subheading, Paragraph } from 'react-native-paper';
 import Player from '../components/player';
 import AlbumArt from '../components/AlbumArt';
 import PushController from '../components/pushController';
+import SplashScreen from 'react-native-splash-screen';
 import TrackPlayer from "react-native-track-player";
-const url = 'https://radio.umn.ac.id';
-const cheerio = require('react-native-cheerio')
 
 export default class radio extends Component {
   constructor(props) {
@@ -24,10 +21,11 @@ export default class radio extends Component {
       artist: "Loading Penyiar...",
       description: '',
       artwork: "../assets/images/umnradio.png",
+      volume: 1,
+      audioUrl: "https://stream.radio.umn.ac.id/node/umnradio",
     }
   }
-
-  getMoviesFromApiAsync() {
+  getMetadata() {
     setInterval(() => {
       var apiRequest1 = fetch('https://radio.umn.ac.id/scrape').then(function (response) {
         return response.json()
@@ -93,17 +91,10 @@ export default class radio extends Component {
         });
 
     }, 1000);
-
   }
 
-  componentWillMount() {
-    this.setState({
-      volume: 1,
-      audioUrl: "http://radio.umn.ac.id/node/umnradio",
-    })
-    this.getMoviesFromApiAsync();
-  }
   componentDidMount() {
+    this.getMetadata();
     TrackPlayer.setupPlayer().then(async () => {
       // Adds a track to the queue
       await TrackPlayer.add({
@@ -120,10 +111,16 @@ export default class radio extends Component {
       .catch((error) => {
         console.error(error);
       });
+    this.sleep(10000);
+    SplashScreen.hide();
   }
-  componentWillUnmount() {
-    TrackPlayer.destroy();
+  // componentWillUnmount() {
+  //   TrackPlayer.destroy();
+  // }
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
+
   render() {
     return (
       <PaperProvider>

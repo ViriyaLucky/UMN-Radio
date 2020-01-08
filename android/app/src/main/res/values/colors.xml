@@ -1,3 +1,7 @@
 <resources>
     <color name="white">#FFF</color>
+    <color name="primary_dark">#000000</color>
+    <color name="status_bar_color">#FFF</color>
+     <color name="splashscreen_bg">#FFF</color>
+    <color name="app_bg">#FFF</color>
 </resources>
