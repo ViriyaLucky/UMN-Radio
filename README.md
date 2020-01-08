@@ -1,6 +1,6 @@
 # UMN Radio Application
 
-Simple Radio App Using React Native + React Native Track Player + React Native Paper
+Offical UMN Radio App Using React Native + React Native Track Player + React Native Paper
 
 ## Installation
 
